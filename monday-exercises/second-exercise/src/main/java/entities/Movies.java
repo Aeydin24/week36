@@ -22,12 +22,12 @@ public class Movies implements Serializable {
     private Long id;
     private int year;
     private String name;
-    private String[] actors;
+    private String mainactors;
 
     public Movies(int year, String name, String mainactors) {
         this.year = year;
         this.name = name;
-        this.actors = actors;
+        this.mainactors = mainactors;
     }
 
     public Movies() {
@@ -57,12 +57,12 @@ public class Movies implements Serializable {
         this.name = name;
     }
 
-    public String[] getActors() {
-        return actors;
+    public String getMainactors() {
+        return mainactors;
     }
 
-    public void setActors(String[] actors) {
-        this.actors = actors;
+    public void setMainactors(String mainactors) {
+        this.mainactors = mainactors;
     }
 
 }

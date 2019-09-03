@@ -50,8 +50,8 @@ public class MoviesResource {
     public String populate() {
         EntityManager em = EMF.createEntityManager();
         try {
-           Movies m2 = new Movies (1, "Bram Stokers Dracula", "Dracula, duhh");
-           Movies m1 = new Movies (2, "Backdoorsluts 9", "Niels Bramsespor og Denise Klarskov");
+           Movies m2 = new Movies (1970, "Bram Stokers Dracula", "Dracula, duhh");
+           Movies m1 = new Movies (2015, "Backdoorsluts 9", "Niels Bramsespor og Denise Klarskov");
             em.getTransaction().begin(); //begin transaction
             em.persist(m1);
             em.persist(m2);
