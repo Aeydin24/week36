@@ -2,9 +2,10 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import entities.RenameMe;
+import entities.Movies;
 import utils.EMF_Creator;
-import facades.FacadeExample;
+import facades.MoviesFacade;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -16,16 +17,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 //Todo Remove or change relevant parts before ACTUAL use
-@Path("xxx")
-public class RenameMeResource {
+@Path("movie")
+public class MoviesResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
                 "pu",
-                "jdbc:mysql://localhost:3307/startcode",
+                "jdbc:mysql://localhost:3307/movies",
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.CREATE);
-    private static final FacadeExample FACADE =  FacadeExample.getFacadeExample(EMF);
+    private static final MoviesFacade FACADE =  MoviesFacade.getFacadeExample(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
             
     @GET
@@ -33,25 +34,11 @@ public class RenameMeResource {
     public String demo() {
         return "{\"msg\":\"Hello World\"}";
     }
-    @Path("count")
+@Path("all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getRenameMeCount() {
-        long count = FACADE.getRenameMeCount();
-        //System.out.println("--------------->"+count);
-        return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
-    }
-
-    @POST
-    @Consumes({MediaType.APPLICATION_JSON})
-    public void create(RenameMe entity) {
-        throw new UnsupportedOperationException();
-    }
-    
-    @PUT
-    @Path("/{id}")
-    @Consumes({MediaType.APPLICATION_JSON})
-    public void update(RenameMe entity, @PathParam("id") int id) {
-        throw new UnsupportedOperationException();
+    public String getAllMovies() {
+        List<Movies> movie = FACADE.getAllMovies();
+        return GSON.toJson(movie);
     }
 }
