@@ -6,7 +6,9 @@ import entities.Movies;
 import utils.EMF_Creator;
 import facades.MoviesFacade;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -40,5 +42,23 @@ public class MoviesResource {
     public String getAllMovies() {
         List<Movies> movie = FACADE.getAllMovies();
         return GSON.toJson(movie);
+    }
+    
+    @GET
+    @Path("/populate")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String populate() {
+        EntityManager em = EMF.createEntityManager();
+        try {
+           Movies m2 = new Movies (1, "Bram Stokers Dracula", "Dracula, duhh");
+           Movies m1 = new Movies (2, "Backdoorsluts 9", "Niels Bramsespor og Denise Klarskov");
+            em.getTransaction().begin(); //begin transaction
+            em.persist(m1);
+            em.persist(m2);
+            em.getTransaction().commit(); //commit transactions
+        } finally {
+            em.close();
+        }
+        return "Populated the Database successfully. Don't run this again.";
     }
 }
