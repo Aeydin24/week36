@@ -70,7 +70,7 @@ public class MoviesResourceTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Movies.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
             em.persist(new Movies(1, "Bram Stokers Dracula", "Dracula, duhh"));
             em.persist(new Movies(2 ,"Backdoorsluts 9", "Niels Bramsespor og Denise Klarskov"));
            

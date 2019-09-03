@@ -24,7 +24,7 @@ public class MoviesFacadeTest {
     public MoviesFacadeTest() {
     }
 
-    //@BeforeAll
+    @BeforeAll
     public static void setUpClass() {
         emf = EMF_Creator.createEntityManagerFactory(
                 "pu",
@@ -33,18 +33,6 @@ public class MoviesFacadeTest {
                 "ax2",
                 EMF_Creator.Strategy.CREATE);
         facade = MoviesFacade.getFacadeExample(emf);
-    }
-
-    /*   **** HINT **** 
-        A better way to handle configuration values, compared to the UNUSED example above, is to store those values
-        ONE COMMON place accessible from anywhere.
-        The file config.properties and the corresponding helper class utils.Settings is added just to do that. 
-        See below for how to use these files. This is our RECOMENDED strategy
-     */
-    @BeforeAll
-    public static void setUpClassV2() {
-       emf = EMF_Creator.createEntityManagerFactory(DbSelector.TEST,Strategy.DROP_AND_CREATE);
-       facade = MoviesFacade.getFacadeExample(emf);
     }
 
     @AfterAll
@@ -59,7 +47,7 @@ public class MoviesFacadeTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Movies.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Movie.deleteAllRows").executeUpdate();
             em.persist(new Movies(1, "Bram Stokers Dracula", "Dracula, duhh"));
             em.persist(new Movies(2 ,"Backdoorsluts 9", "Niels Bramsespor og Denise Klarskov"));
             em.getTransaction().commit();
