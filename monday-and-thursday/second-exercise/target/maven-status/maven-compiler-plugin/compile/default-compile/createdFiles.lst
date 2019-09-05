@@ -9,6 +9,7 @@ utils/EMF_Creator$DbSelector.class
 utils/Settings.class
 utils/EMF_Creator$Strategy$1.class
 utils/EMF_Creator$1.class
+entities/MoviesDTO.class
 rest/ApplicationConfig.class
 entities/Movies_.class
 entities/Movies.class
