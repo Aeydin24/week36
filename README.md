@@ -16,8 +16,8 @@ This was also fairly comfortable exercises. Took a while, but got through em.
 
 [Click here](https://github.com/Aeydin24/week36/tree/master/Thursday)
 
-This was a fucking clusterfuck and a nightmare. I only figured out the first two exercises, and didnt get to do the rest. This took me 3 hours, approx. 
+All done.
 
 ## Friday ## 
 
-I did not get to friday.
+I did not get to friday, and I've continued to have trouble with Travis. I've tried for so long. 
